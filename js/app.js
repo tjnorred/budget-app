@@ -104,18 +104,51 @@ addExpense(expense){
   this.expenseList.appendChild(div);
 }
 
-  //total expense
+//total expense
 totalExpense(){
   let total = 0;
-if(this.itemList.length > 0){
-total = this.itemList.reduce(function(acc,curr){
-  acc += curr.amount;
-  return acc;
-},0);
-}
+  if(this.itemList.length > 0){
+    total = this.itemList.reduce(function(acc,curr){
+      acc += curr.amount;
+      return acc;
+    },0);
+  }
   this.expenseAmount.textContent = total;
   return total;
 }
+// edit expense
+editExpense(element){
+  let id = parseInt(element.dataset.id);
+  let parent = element.parentElement.parentElement.parentElement;
+  //remove from DOM
+  this.expenseList.removeChild(parent);
+  //remove from DOM
+  let expense = this.itemList.filter(function(item){
+    return item.id === id;
+  })
+  this.expenseInput.value = expense[0].title;
+  this.amountInput.value = expense[0].amount;
+  //remove from the list
+  let tempList = this.itemList.filter(function(item){
+    return item.id !== id;
+  })
+  this.itemList = tempList;
+  this.showBalance();
+
+}
+//delete expense
+deleteExpense(element){
+  let id = parseInt(element.dataset.id);
+  let parent = element.parentElement.parentElement.parentElement;
+  //remove from DOM
+  this.expenseList.removeChild(parent);
+  //remove from the list
+  let tempList = this.itemList.filter(function(item){
+    return item.id !== id;
+  })
+  this.itemList = tempList;
+  this.showBalance();
+  }
 }
 
 function eventListeners() {
@@ -136,7 +169,14 @@ expenseForm.addEventListener('submit', function(event){
   ui.submitExpenseForm();
 });
 // expense click
-expenseList.addEventListener('click', function(event){});
+expenseList.addEventListener('click', function(event){
+  if(event.target.parentElement.classList.contains('edit-icon')){
+    ui.editExpense(event.target.parentElement);
+  }
+  else if(event.target.parentElement.classList.contains('delete-icon')){
+    ui.deleteExpense(event.target.parentElement);
+  }
+});
 }
 
 document.addEventListener('DOMContentLoaded', function(){
