@@ -1,3 +1,7 @@
+---
+permalink: /index.html
+---
+
 # Budget Application
 
 A budget app written in HTML, CSS, and JS
