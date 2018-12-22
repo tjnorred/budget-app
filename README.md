@@ -1,7 +1,3 @@
----
-permalink: /index.html
----
-
 # Budget Application
 
 A budget app written in HTML, CSS, and JS
@@ -21,3 +17,8 @@ A budget app written in HTML, CSS, and JS
 ## License
 
 This project is released under the [MIT license](LICENSE).
+
+
+---
+permalink: /index.html
+---
