@@ -106,19 +106,20 @@ body {
 }
 @media screen and (min-width: 992px) {
   .budget {
-    font-size: 2.6rem;
+    font-size: 1.6rem;
     color: var(--mainGreen);
   }
   .expense {
+    font-size: 1.6rem;
     color: var(--mainRed);
   }
   .balance {
-    font-size: 2.6rem;
+    font-size: 1.6rem;
   }
   .budget-icon,
   .expense-icon,
   .balance-icon {
-    font-size: 3.5rem;
+    font-size: 2.6rem;
     color: var(--mainBlue);
   }
 }
